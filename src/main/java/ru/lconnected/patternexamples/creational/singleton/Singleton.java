@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ru.lconnected.patternexamples.singleton;
+package ru.lconnected.patternexamples.creational.singleton;
 
 import java.util.Date;
 
@@ -13,20 +13,26 @@ import java.util.Date;
  */
 public class Singleton {
     
-    private Singleton instance;
+    private static volatile Singleton instance;
     private Date created;
     
     private Singleton() {
         created = new Date();
     }
 
-    public synchronized Singleton getInstance() {
+    public static synchronized Singleton getInstance() {
         if(instance == null) {
             instance = new Singleton();
         }
         return instance;
         
     }
+
+    public Date getCreated() {
+        return created;
+    }
+    
+    
     
     
     
